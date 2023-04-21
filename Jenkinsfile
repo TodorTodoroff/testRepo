@@ -36,7 +36,7 @@ pipeline
                     println filteredVersion
                     println filteredVersion.equalsIgnoreCase(node16version)
 
-                    if(result.equalsIgnoreCase(node16version)) {
+                    if(repoVersion.equalsIgnoreCase(node16version)) {
                         currentBuild.result = 'SUCCESS'
                         return
                     } else {
