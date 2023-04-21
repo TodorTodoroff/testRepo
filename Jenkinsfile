@@ -22,28 +22,24 @@ pipeline
             steps
             {
                 script {
-                    def File = readFile "${env.WORKSPACE}/file.xml"
-                    echo "${File}"
+                    def buildContentFile = readFile "${env.WORKSPACE}/file.xml"
+                    echo "${buildContentFile}"
 
-                    def xml = new XmlSlurper().parseText(File)
+                    def parsedXml = new XmlSlurper().parseText(buildContentFile)
 
-                    def env = xml.runtimes.node_16.version[0]
-                    echo "${env}"
-                    def envtest = env.toString()
-                    echo "${envtest}"
+                    def node16version = parsedXml.runtimes.node_16.version[0].toString()
+                    echo "${node16version}"
 
-                    def test = "https://nodejs.org/dist/latest-v16.x/".toURL().text
-                    println test
-                    def result = (test =~ /[0-9]{2}\.[0-9]{2}\.[0-9]*/)[0]
-                    println result
-                    println result.equalsIgnoreCase(envtest)
+                    def repoVersion = "https://nodejs.org/dist/latest-v16.x/".toURL().text
+                    println repoVersion
+                    def filteredVersion = (test =~ /[0-9]{2}\.[0-9]{2}\.[0-9]*/)[0]
+                    println filteredVersion
+                    println filteredVersion.equalsIgnoreCase(envtest)
 
-                    if(result.equalsIgnoreCase(envtest)) {
-                        println "YEAH"
+                    if(result.equalsIgnoreCase(node16version)) {
                         currentBuild.result = 'SUCCESS'
                         return
                     } else {
-                        println "NAH"
                         currentBuild.result = 'FAILURE'
                         return
                     }
