@@ -32,9 +32,9 @@ pipeline
 
                     def repoVersion = "https://nodejs.org/dist/latest-v16.x/".toURL().text
                     println repoVersion
-                    def filteredVersion = (test =~ /[0-9]{2}\.[0-9]{2}\.[0-9]*/)[0]
+                    def filteredVersion = (repoVersion =~ /[0-9]{2}\.[0-9]{2}\.[0-9]*/)[0]
                     println filteredVersion
-                    println filteredVersion.equalsIgnoreCase(envtest)
+                    println filteredVersion.equalsIgnoreCase(node16version)
 
                     if(result.equalsIgnoreCase(node16version)) {
                         currentBuild.result = 'SUCCESS'
