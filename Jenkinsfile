@@ -10,13 +10,6 @@ pipeline
     }
     stages
     {
-        stage('Clone')
-        {
-            steps
-            {
-                git branch: 'main', url: 'https://github.com/TodorTodoroff/testRepo.git'
-            }
-        }
         stage('Execute the version checks')
         {
             steps
