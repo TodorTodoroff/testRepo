@@ -5,7 +5,7 @@
         <version>14.21.4</version>
         <repository>build-releases</repository>
     </node_14>
-        <node_16>
+    <node_16>
         <version>16.19.1</version>
         <repository>build-releases</repository>
     </node_16>
