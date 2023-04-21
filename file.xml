@@ -6,7 +6,7 @@
             <repository>build-releases</repository>
         </node_14>
         <node_16>
-            <version>16.20.0</version>
+            <version>16.21.1</version>
             <repository>build-releases</repository>
         </node_16>
     </runtimes>
