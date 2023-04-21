@@ -17,7 +17,7 @@ pipeline
                 git branch: 'main', url: 'https://github.com/TodorTodoroff/testRepo.git'
             }
         }
-        stage('Build and Run')
+        stage('Execute the version checks')
         {
             steps
             {
@@ -37,6 +37,16 @@ pipeline
                     def result = (test =~ /[0-9]{2}\.[0-9]{2}\.[0-9]*/)[0]
                     println result
                     println result.equalsIgnoreCase(envtest)
+
+                    if(result.equalsIgnoreCase(envtest)) {
+                        println "YEAH"
+                        currentBuild.result = 'SUCCESS'
+                        return
+                    } else {
+                        println "NAH"
+                        currentBuild.result = 'FAILURE'
+                        return
+                    }
                 }
             }
         }
