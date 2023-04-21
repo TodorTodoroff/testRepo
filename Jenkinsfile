@@ -21,7 +21,8 @@ pipeline
         {
             steps
             {
-                script {
+                script 
+                {
                     def buildContentFile = readFile "${env.WORKSPACE}/file.xml"
                     echo "${buildContentFile}"
 
@@ -48,9 +49,12 @@ pipeline
         }
         stage('Something Else')
         {
-            script
+            steps
             {
-                println 'HELLO VIETNAM'
+                script
+                {
+                    println 'HELLO VIETNAM'
+                }
             }
         }
     }
