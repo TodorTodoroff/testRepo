@@ -46,6 +46,13 @@ pipeline
                 }
             }
         }
+        stage('Something Else')
+        {
+            script
+            {
+                println 'HELLO VIETNAM'
+            }
+        }
     }
     post
     {
